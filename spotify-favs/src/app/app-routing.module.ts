@@ -10,6 +10,7 @@ const routes: Routes = [
   {path:'', component: HomeComponent},
   {path: 'about', component:AboutComponent},
    {path: 'login', component:LoginComponent},
+   {path: 'callback', component:LoginComponent},
   // {path: 'moments/edit/:id', component:EditMomentComponent},
   // {path: 'moments/:id', component:MomentComponent}
 ];

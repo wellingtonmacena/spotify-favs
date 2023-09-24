@@ -1,1 +1,8 @@
-<p>login works!</p>
+<div *ngIf="isLogged; else noLogged">
+  <p>Logado</p>
+</div>
+
+<ng-template #noLogged>
+  <p>Faça seu login para ter acessos as suas analíse musicais</p>
+  <button (click)="login()">Login</button>
+</ng-template>
