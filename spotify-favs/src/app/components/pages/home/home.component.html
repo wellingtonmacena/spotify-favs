@@ -1,3 +1,31 @@
-<p>home works!</p>
-<p>home works!</p><p>home works!</p><p>home works!</p><p>home works!</p><p>home works!</p><p>home works!</p><p>home works!</p>
-<p>home works!</p><p>home works!</p><p>home works!</p><p>home works!</p><p>home works!</p>
+<div class="home-container">
+  <h1>Esses são seus artistas favoritos</h1>
+
+<div class="search-container">
+  <form >
+    <fa-icon [icon]="faSearch" ></fa-icon>
+    <input type="text" placeholder="Ou busque por um artista..." (input)="search($event)">
+  </form>
+</div>
+
+  <div *ngIf="artists.length > 0; else noArtists">
+    <div class="moments-container">
+    <div class="moment" *ngFor="let artist of artists">
+      <!-- <img
+      class="moment-image"
+        src="{{ moment.image_url }}"
+        alt="{{ moment.title }}"
+        (click)="redirect(moment.id!);"
+      />
+      <h3>{{ moment.title }}</h3>
+      <p class="date">Em:{{ moment.created_at }}</p>
+      <p>Comentários:{{ moment.comments!.length }}</p>
+      <p><a routerLink="moments/{{ moment.id }}">Detalhes</a></p> -->
+    </div>
+  </div>
+  </div>
+
+  <ng-template #noArtists>
+    <h1>Você precisa se logar para ter acessos ao seus analytics</h1>
+  </ng-template>
+</div>
