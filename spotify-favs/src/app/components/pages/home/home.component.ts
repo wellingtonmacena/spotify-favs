@@ -23,15 +23,11 @@ export class HomeComponent {
     private router: Router,
     private spotifyAuthService: SpotifyAuthService
   ) {
-    // if (spotifyAuthService.isSetup) {
-    //   this.spotifyService.getFavoritesArtists().then((item) => {
-    //     item?.subscribe((item1) => {
-    //       console.log(item1);
-    //     });
-    //   });
-    // } else {
-    //   console.log('not logged');
-    // }
+    if (spotifyAuthService.isSetup) {
+      this.spotifyService.getUserProfileInfo();
+    } else {
+      console.log('not logged');
+    }
   }
 
   search(event: Event): void {

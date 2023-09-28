@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+/spotify-favs/src/environments/
 
 # Node
 /node_modules

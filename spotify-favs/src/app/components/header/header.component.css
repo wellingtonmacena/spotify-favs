@@ -44,3 +44,23 @@
 #add a:hover {
   background-color: #efefef;
 }
+
+#oval-shape {
+  width: 1.4em;
+  height: 1.6em;
+  border-radius: .6em;
+}
+
+#profile-li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  top: 1.6em ;
+}
+
+#profile-li a {
+
+  padding: 1em;
+}
+

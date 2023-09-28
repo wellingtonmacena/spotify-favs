@@ -1,7 +1,7 @@
 export const environment ={
   production: false,
-  spotifyClientId: 'aa4cd2b02d2f4983ae28aceb1562bb76',
-  spotifyClientSecret: 'daf919b284aa4e5687c7e4740253dc16',
+  spotifyClientId: '84e233434f434c5086c638405f7420fe',
+  spotifyClientSecret: 'b7cd3573fe7e48ce9d66119c43faf228',
   spotifyReadScope: 'user-read-private user-read-email',
   spotifyRedirectURI: 'http://localhost:4200/callback',
 }
