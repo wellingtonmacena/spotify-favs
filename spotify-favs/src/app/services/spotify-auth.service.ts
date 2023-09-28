@@ -6,28 +6,33 @@ import { StorageSessionService } from './storage-session.service';
   providedIn: 'root',
 })
 export class SpotifyAuthService {
-  queryParams: SpotifyAuthResponse | null = {};
-
-  isSetup: Boolean = false;
 
   constructor(private storageSessionService: StorageSessionService) {
-    this.queryParams = {
+
+  }
+
+  get queryParams() {
+    let queryParams1: SpotifyAuthResponse | null = {
       code: this.storageSessionService.getData('code')!,
       state: this.storageSessionService.getData('state')!,
     };
-    this.isSetup = true;
 
-    if (this.queryParams.code == null && this.queryParams.state == null) {
-      this.queryParams = null;
-      this.isSetup = true;
+    if (queryParams1.code == null && queryParams1.state == null) {
+      queryParams1 = null;
     }
+
+    return queryParams1 ;
   }
 
-  get refresh_token() {
+  get isSetup(): Boolean {
+    return this.accessToken != null;
+  }
+
+  get refreshToken() {
     return this.storageSessionService.getData('refresh_token');
   }
 
-  get  access_token() {
-    return this.storageSessionService.getData('access_token');;
+  get accessToken() {
+    return this.storageSessionService.getData('access_token');
   }
 }

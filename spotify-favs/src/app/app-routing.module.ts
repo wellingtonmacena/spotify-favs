@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'callback', component: CallbackComponent },
+  { path: 'profile', component: CallbackComponent },
   // {path: 'moments/edit/:id', component:EditMomentComponent},
   // {path: 'moments/:id', component:MomentComponent}
 ];

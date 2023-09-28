@@ -9,9 +9,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SpotifyService {
-  private baseApiUrl = environment.baseApiUrl;
-  private apiUrl = `${this.baseApiUrl}/api/v1/moments`;
-
   constructor(
     private http: HttpClient,
     private spotifyAuthService: SpotifyAuthService

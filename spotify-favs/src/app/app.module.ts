@@ -13,6 +13,7 @@ import { CallbackComponent } from './components/pages/callback/callback.componen
 import { MessagesComponent } from './components/messages/messages.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoadingInterceptor } from './middlewares/loading.interceptor';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoadingInterceptor } from './middlewares/loading.interceptor';
     HomeComponent,
     LoginComponent,
     MessagesComponent,
-    CallbackComponent
+    CallbackComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
