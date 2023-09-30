@@ -24,7 +24,7 @@ export class HomeComponent {
     private spotifyAuthService: SpotifyAuthService
   ) {
     if (spotifyAuthService.isSetup) {
-      this.spotifyService.getUserProfileInfo();
+     // this.spotifyService.getUserProfileInfo();
     } else {
       console.log('not logged');
     }

@@ -3,6 +3,7 @@ import { LoginService } from './../../../services/login.service';
 import { Router } from '@angular/router';
 import { MessagesService } from 'src/app/services/messages.service';
 import { SpotifyAuthService } from 'src/app/services/spotify-auth.service';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-callback',
@@ -16,27 +17,42 @@ export class CallbackComponent {
     private loginService: LoginService,
     private router: Router,
     private spotifyAuthService: SpotifyAuthService,
-    private messagesService: MessagesService
+    private messagesService: MessagesService,
+    private spotifyService: SpotifyService,
   ) {
+
     if (this.spotifyAuthService.accessToken != null) {
       this.messagesService.add('Usuario já autenticado');
       this.router.navigate([''], { queryParams: {} });
-    } else {
+    }
+    else {
       this.loginService.getAllQueryParams();
       while (
         this.spotifyAuthService.queryParams == null ||
         this.spotifyAuthService.queryParams == undefined
-      ) {
+      )
+
+      {
         setTimeout(() => {
-          console.log('waiting: ' + new Date().toLocaleString());
           this.loginService.getAllQueryParams();
-        }, 1500);
+          console.log('getAllQueryParams? ' + new Date());
+        }, 1000);
       }
 
       setTimeout(() => {
-        console.log('getAcessToken');
         this.loginService.getAcessToken();
-      }, 3000);
+        console.log('getAcessToken? ' + new Date());
+      },3000);
+
+      setTimeout(() => {
+        this.spotifyService.getUserProfileInfo();
+        console.log('getUserProfileInfo? ' + new Date());
+        this.router.navigate([''], { queryParams: {} });
+      }, 4500);
+
+      setTimeout(() => {
+        this.router.navigate([''], { queryParams: {} });
+      }, 6500);
     }
   }
 }

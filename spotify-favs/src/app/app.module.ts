@@ -13,7 +13,7 @@ import { CallbackComponent } from './components/pages/callback/callback.componen
 import { MessagesComponent } from './components/messages/messages.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoadingInterceptor } from './middlewares/loading.interceptor';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 
 @NgModule({
   declarations: [

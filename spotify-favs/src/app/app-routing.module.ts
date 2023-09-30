@@ -5,7 +5,7 @@ import { HomeComponent } from 'src/app/components/pages/home/home.component';
 import { AboutComponent } from './components/pages/about/about.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { CallbackComponent } from './components/pages/callback/callback.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

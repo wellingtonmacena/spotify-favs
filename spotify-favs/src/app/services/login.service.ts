@@ -66,7 +66,7 @@ export class LoginService {
 
   async getAcessToken() {
     var code1 = this.spotifyAuthService.queryParams?.code;
-    axios({
+    await axios({
       method: 'post',
       url: 'https://accounts.spotify.com/api/token',
       data: querystring.stringify({
@@ -80,7 +80,7 @@ export class LoginService {
           `${environment.spotifyClientId}:${environment.spotifyClientSecret}`
         ).toString('base64')}`,
       },
-    }).then((response) => {
+    }).   then((response) => {
       if (response.status == 200) {
         this.storageSessionService.setData(
           'access_token',
@@ -90,8 +90,6 @@ export class LoginService {
           'spotify_response',
           JSON.stringify(response.data)
         );
-
-        this.router.navigate([''], { queryParams: {} });
       }
     });
   }
