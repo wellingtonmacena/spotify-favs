@@ -1,6 +1,6 @@
 import { SpotifyAuthService } from 'src/app/services/spotify-auth.service';
 import { Injectable } from '@angular/core';
-import { SpotifyResponse } from '../interfaces/Spotify/SpotifyResponse';
+import { SpotifyArtistResponse } from '../interfaces/Spotify/SpotifyArtistResponse';
 import { Observable } from 'rxjs';
 import axios from 'axios';
 import { StorageSessionService } from './storage-session.service';
@@ -14,13 +14,19 @@ export class SpotifyService {
     private storageSessionService: StorageSessionService,
   ) {}
 
-  async getFavoritesArtists(): Promise<Observable<SpotifyResponse> | null> {
-    if (this.spotifyAuthService.queryParams == null) {
-      console.log('Você precisa se logar primeiro');
-      return null;
-    }
+   getUserTopArtists(time_range:string = 'medium_term',limit:string = '10', offset:string = '0' ):SpotifyArtistResponse {
+    var accessToken = this.spotifyAuthService.accessToken
+     axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/me/top/artists?time_range=${time_range}&limit=${limit}&offset=${offset}`,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }).then((response) => {
+      this.storageSessionService.setData("userTopArtists", JSON.stringify(response.data))
+    });
 
-    return null;
+    return this.storageSessionService.userTopArtists!;
   }
 
   async getUserProfileInfo() {

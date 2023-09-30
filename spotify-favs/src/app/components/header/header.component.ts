@@ -1,6 +1,6 @@
 import { MessagesService } from './../../services/messages.service';
 import { Component, Input } from '@angular/core';
-import { UserInfo } from 'src/app/interfaces/Spotify/UserProfile';
+import { UserProfileResponse } from 'src/app/interfaces/Spotify/UserProfileResponse';
 import { StorageSessionService } from 'src/app/services/storage-session.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { StorageSessionService } from 'src/app/services/storage-session.service'
 })
 export class HeaderComponent {
   @Input() profilePhoto: string = '';
-  @Input() userProfileInfo!: UserInfo | null;
+  @Input() userProfileInfo!: UserProfileResponse;
 
   constructor(private storageSessionService: StorageSessionService, private messagesService: MessagesService) {
 
@@ -21,9 +21,5 @@ export class HeaderComponent {
     } else {
       this.profilePhoto = '../../../assets/account.png';
     }
-  }
-
-  noProfileInfo(){
-    this.messagesService.add("Você precisa estar logar acessar essa aba")
   }
 }

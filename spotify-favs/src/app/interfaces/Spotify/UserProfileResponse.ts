@@ -1,4 +1,4 @@
-export interface UserInfo {
+export interface UserProfileResponse {
   display_name:     string;
   external_urls:    ExternalUrls;
   href:             string;

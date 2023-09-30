@@ -11,15 +11,18 @@
   <div *ngIf="artists.length > 0; else noArtists">
     <div class="moments-container">
     <div class="moment" *ngFor="let artist of artists">
-      <!-- <img
+      <img
       class="moment-image"
-        src="{{ moment.image_url }}"
-        alt="{{ moment.title }}"
-        (click)="redirect(moment.id!);"
+        src="{{ artist.images[0].url }}"
+        alt="{{ artist.name }}"
+        (click)="redirect(artist.external_urls.spotify);"
       />
-      <h3>{{ moment.title }}</h3>
-      <p class="date">Em:{{ moment.created_at }}</p>
-      <p>Comentários:{{ moment.comments!.length }}</p>
+      <h3>{{ artist.name }}</h3>
+      <p>Genres:{{ getArtistGenres(artist) }}</p>
+      <p>Popularity:{{ artist.popularity}}</p>
+      <p>You favorites tracks from artist</p>
+      <!-- <p class="date">Em:{{ moment.created_at }}</p> -->
+      <!-- <p>Comentários:{{ moment.comments!.length }}</p>
       <p><a routerLink="moments/{{ moment.id }}">Detalhes</a></p> -->
     </div>
   </div>

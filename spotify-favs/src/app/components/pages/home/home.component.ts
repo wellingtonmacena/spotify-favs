@@ -1,11 +1,12 @@
+
 import { SpotifyAuthService } from 'src/app/services/spotify-auth.service';
-import { SpotifyAuthResponse } from './../../../interfaces/SpotifyAuthResponse';
+import { SpotifyAuthResponse } from '../../../interfaces/Spotify/SpotifyAuthResponse';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpotifyService } from 'src/app/services/spotify.service';
-import { ArtistItem } from 'src/app/interfaces/Spotify/SpotifyResponse';
 import { environment } from 'src/environments/environments';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Artist } from 'src/app/interfaces/Spotify/SpotifyArtistResponse';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  allArtists: ArtistItem[] = [];
-  artists: ArtistItem[] = [];
+  allArtists: Artist[] = [];
+  artists: Artist[] = [];
   faSearch = faSearch;
   searchTerm: string = '';
 
@@ -24,7 +25,10 @@ export class HomeComponent {
     private spotifyAuthService: SpotifyAuthService
   ) {
     if (spotifyAuthService.isSetup) {
-     // this.spotifyService.getUserProfileInfo();
+      var response = this.spotifyService.getUserTopArtists();
+      this.allArtists = response.items;
+      this.artists = response.items;
+      console.log(this.allArtists);
     } else {
       console.log('not logged');
     }
@@ -34,12 +38,20 @@ export class HomeComponent {
     const target = event.target as HTMLInputElement;
     const value = target.value;
 
-    //   if (value == '') {
-    //     this.moments = this.allMoments;
-    //   } else {
-    //     this.moments = this.allMoments.filter(
-    //       (item) => item.title != null && item.title.toLowerCase().includes(value)
-    //     );
-    //   }
+    if (value == '') {
+      this.artists = this.allArtists;
+    } else {
+      this.artists = this.allArtists.filter(
+        (item) => item.name != null && item.name.toLowerCase().includes(value)
+      );
+    }
+  }
+
+  redirect(url: string) {
+    window.open(url, "_blank");
+  }
+
+  getArtistGenres(artist:Artist){
+    //artist.genres.forEach(item => item.CA)
   }
 }

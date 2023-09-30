@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UserInfo } from '../interfaces/Spotify/UserProfile';
+import { UserProfileResponse } from '../interfaces/Spotify/UserProfileResponse';
+import { SpotifyArtistResponse } from '../interfaces/Spotify/SpotifyArtistResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,15 @@ export class StorageSessionService {
     return sessionStorage.getItem(key);
   }
 
-  get userProfileInfo(): UserInfo | null {
+  get userProfileInfo(): UserProfileResponse | null {
     var userProfileInfoString = this.getData('userProfileInfo');
+    if (userProfileInfoString == null) return null;
+
+    return JSON.parse(userProfileInfoString);
+  }
+
+  get userTopArtists(): SpotifyArtistResponse | null {
+    var userProfileInfoString = this.getData('userTopArtists');
     if (userProfileInfoString == null) return null;
 
     return JSON.parse(userProfileInfoString);

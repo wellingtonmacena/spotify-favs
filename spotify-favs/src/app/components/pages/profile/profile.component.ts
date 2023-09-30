@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserInfo } from 'src/app/interfaces/Spotify/UserProfile';
+import { UserProfileResponse } from 'src/app/interfaces/Spotify/UserProfileResponse';
 import { StorageSessionService } from 'src/app/services/storage-session.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { StorageSessionService } from 'src/app/services/storage-session.service'
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
-   userProfile!: UserInfo ;
+   userProfile!: UserProfileResponse ;
   constructor(private storageSessionService: StorageSessionService) {
     this.userProfile = this.storageSessionService.userProfileInfo!;
   }

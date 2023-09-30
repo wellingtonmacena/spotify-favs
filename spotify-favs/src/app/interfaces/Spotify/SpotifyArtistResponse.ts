@@ -1,14 +1,14 @@
-export interface SpotifyResponse {
+export interface SpotifyArtistResponse {
   href: string
   limit: number
   next: string
   offset: number
   previous: any
   total: number
-  items: ArtistItem[]
+  items: Artist[]
 }
 
-export interface ArtistItem {
+export interface Artist {
   external_urls: ExternalUrls
   followers: Followers
   genres: string[]

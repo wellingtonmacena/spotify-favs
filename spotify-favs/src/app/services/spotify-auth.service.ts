@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SpotifyAuthResponse } from '../interfaces/SpotifyAuthResponse';
+import { SpotifyAuthResponse } from '../interfaces/Spotify/SpotifyAuthResponse';
 import { StorageSessionService } from './storage-session.service';
 
 @Injectable({
