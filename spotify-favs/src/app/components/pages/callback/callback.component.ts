@@ -42,17 +42,17 @@ export class CallbackComponent {
       setTimeout(() => {
         this.loginService.getAcessToken();
         console.log('getAcessToken? ' + new Date());
-      },3000);
+      },2000);
 
       setTimeout(() => {
         this.spotifyService.getUserProfileInfo();
         console.log('getUserProfileInfo? ' + new Date());
         this.router.navigate([''], { queryParams: {} });
-      }, 4500);
+      }, 3000);
 
       setTimeout(() => {
         this.router.navigate([''], { queryParams: {} });
-      }, 6500);
+      }, 4000);
     }
   }
 }
