@@ -7,7 +7,7 @@ import { Component, Input, Output } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  @Input() component: string = 'Top Tracks';
+  @Input() component: string = 'Top Artists';
   constructor() { }
 
   send(action:any){

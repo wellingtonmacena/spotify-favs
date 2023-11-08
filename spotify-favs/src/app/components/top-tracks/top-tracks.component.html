@@ -2,14 +2,14 @@
   <h1>These are your Spotify Top Tracks</h1>
 
   <div class="search-container">
-    <form>
       <fa-icon [icon]="faSearch"></fa-icon>
       <input
         type="text"
         placeholder="Here you can search a track..."
         (input)="search($event)"
+        class="search-bar"
       />
-    </form>
+
   </div>
 
   <div class="tracks-container" *ngIf="tracks.length > 0; else noTracks">
@@ -74,9 +74,6 @@
           </div>
 
           <p class="popularity">Popularity: {{ track.popularity }}</p>
-          <p class="duration">
-            original Duration: {{ track.duration_ms }}
-          </p>
           <p class="duration">
             Duration: {{ convertToSeconds(track.duration_ms) }}
           </p>

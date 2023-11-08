@@ -30,5 +30,6 @@ export class HeaderComponent {
     sessionStorage.clear();
     console.log('logout');
     this.router.navigate([''], { queryParams: {} });
+    window.location.reload();
   }
 }

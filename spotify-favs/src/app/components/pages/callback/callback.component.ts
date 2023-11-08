@@ -48,11 +48,11 @@ export class CallbackComponent {
         this.spotifyService.getUserProfileInfo();
         console.log('getUserProfileInfo? ' + new Date());
         this.router.navigate([''], { queryParams: {} });
-      }, 3000);
+      }, 2500);
 
       setTimeout(() => {
         this.router.navigate([''], { queryParams: {} });
-      }, 4000);
+      }, 3500);
     }
   }
 }

@@ -75,7 +75,7 @@ a:hover {
 }
 
 .search-container fa-icon {
-  top: 8px;
+  top: 12px;
   position: absolute;
   left: 8px;
 }
@@ -84,6 +84,10 @@ a:hover {
   padding: 0.5em;
   width: 100%;
   text-align: center;
+}
+
+.search-bar{
+  font-size: large;
 }
 
 .track-image {
@@ -102,12 +106,19 @@ a:hover {
   border-color: black;
 }
 
-.button-search{
+.button-search {
   margin-left: 0.5em;
   font-size: large;
   font-weight: bold;
 }
 
+#time_range {
+  font-size: large;
+}
+
+#tracksQuantity {
+  font-size: large;
+}
 .quantityOption {
   margin-left: 1.5em;
 }
