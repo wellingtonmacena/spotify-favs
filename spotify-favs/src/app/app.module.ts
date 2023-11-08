@@ -15,6 +15,9 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoadingInterceptor } from './middlewares/loading.interceptor';
 import { ProfileComponent } from './components/pages/profile/profile.component';
+import { SpotifyHeaderComponent } from './components/spotify-header/spotify-header.component';
+import { TopArtistsComponent } from './components/top-artists/top-artists.component';
+import { TopTracksComponent } from './components/top-tracks/top-tracks.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
     MessagesComponent,
     CallbackComponent,
     ProfileComponent,
+    SpotifyHeaderComponent,
+    TopArtistsComponent,
+    TopTracksComponent
   ],
   imports: [
     BrowserModule,

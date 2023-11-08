@@ -1,0 +1,91 @@
+<div class="home-container">
+  <h1>These are your Spotify Top Tracks</h1>
+
+  <div class="search-container">
+    <form>
+      <fa-icon [icon]="faSearch"></fa-icon>
+      <input
+        type="text"
+        placeholder="Here you can search a track..."
+        (input)="search($event)"
+      />
+    </form>
+  </div>
+
+  <div class="tracks-container" *ngIf="tracks.length > 0; else noTracks">
+    <form id="searchOptions" [formGroup]="searchForm">
+      <label for="time_range">Choose a time range:</label>
+      <select
+        name="time_range"
+        id="time_range"
+        (change)="changeTimeRange($event)"
+      >
+        <option value="short_term">Short Term</option>
+        <option value="medium_term">Medium Term</option>
+        <option value="long_term">Long Term</option>
+      </select>
+      <img
+        class="tooltip"
+        src="../../../../assets/tooltip.png"
+        alt="tooltip"
+        title="Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks)"
+      />
+
+      <div class="quantityOption" >
+      <label for="">Quantity: </label>
+      <input
+        type="number"
+        placeholder="Number of items to return. Default: 10"
+        min="1"
+        max="50"
+        required
+        (input)="checkMaximumValue($event)"
+        formControlName="tracksQuantity"
+        id="tracksQuantity"
+      />
+    </div>
+      <button class="button-search" (click)="getUserTopTracks()">Search</button>
+    </form>
+
+    <div class="moments-container">
+      <div class="track" *ngFor="let track of tracks; index as i">
+        <img
+          class="track-image"
+          src="{{ track.album.images[0].url }}"
+          alt="{{ track.name }}"
+          (click)="redirect(track.external_urls.spotify)"
+        />
+
+        <div class="track-information-container">
+          <div class="track-name-icon">
+            <div class="track-name" *ngIf="track.explicit; else noExplicit">
+              <fa-icon [icon]="faE" title="Explicit"></fa-icon>
+              <h2>{{ i + 1 }}º {{ track.name }}</h2>
+            </div>
+
+            <ng-template #noExplicit>
+              <h2>{{ i + 1 }}º {{ track.name }}</h2>
+            </ng-template>
+          </div>
+          <div *ngFor="let artist of track.artists; index as i">
+            <p class="artist" (click)="redirect(artist.external_urls.spotify)">
+              º {{ artist.name }}
+            </p>
+          </div>
+
+          <p class="popularity">Popularity: {{ track.popularity }}</p>
+          <p class="duration">
+            original Duration: {{ track.duration_ms }}
+          </p>
+          <p class="duration">
+            Duration: {{ convertToSeconds(track.duration_ms) }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noTracks>
+    <h1>You must be logged to have access to your data analytics</h1>
+  </ng-template>
+</div>
