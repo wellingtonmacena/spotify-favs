@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { MessagesService } from './../../services/messages.service';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,7 +17,7 @@ export class HeaderComponent {
   constructor(
     private storageSessionService: StorageSessionService,
     private messagesService: MessagesService,
-    private router: Router,
+    private router: Router
   ) {
     if (this.storageSessionService.userProfileInfo != null) {
       this.userProfileInfo = this.storageSessionService.userProfileInfo;
@@ -28,8 +29,18 @@ export class HeaderComponent {
 
   logout() {
     sessionStorage.clear();
-    console.log('logout');
     this.router.navigate([''], { queryParams: {} });
     window.location.reload();
+  }
+
+  selectTab(event: Event): void {
+    const target = event.target as HTMLLIElement;
+    let aTags = document.getElementById('navigation')!.getElementsByTagName('a');
+
+    for (let index = 0; index < aTags.length; index++) {
+      aTags[index].classList.remove('active')
+    }
+
+    target.classList.add('active')
   }
 }

@@ -1,10 +1,12 @@
 <div id="menu">
   <nav>
-    <ul class="links" (click)="changeComponent($event)" >
-      <li><a >Top Artists</a></li>
-      <li><a >Top Tracks</a></li>
-      <li><a >About</a></li>
+    <ul id="spotify-header-navigation" class="links" (click)="changeComponent($event)">
+      <li (click)="selectTab($event)"><a>Top Artists</a></li>
+      <li (click)="selectTab($event)"><a>Top Tracks</a></li>
+      <li (click)="selectTab($event)"><a>Tracks Recomendations</a></li>
+      <li (click)="selectTab($event)"><a>Artist Tracks Recomendations</a></li>
+      <li (click)="selectTab($event)"><a>Top Listened Genres</a></li>
+      <li (click)="selectTab($event)"><a>About</a></li>
     </ul>
   </nav>
 </div>
-

@@ -66,3 +66,12 @@
   padding: 1em;
 }
 
+.active {
+  border-radius: 25px;
+  background-color: #b1df9b;
+
+  }
+
+  .active:hover {
+    color: #020202;
+  }

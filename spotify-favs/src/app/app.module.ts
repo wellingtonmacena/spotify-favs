@@ -18,6 +18,9 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { SpotifyHeaderComponent } from './components/spotify-header/spotify-header.component';
 import { TopArtistsComponent } from './components/top-artists/top-artists.component';
 import { TopTracksComponent } from './components/top-tracks/top-tracks.component';
+import { TracksRecomendationsComponent } from './components/tracks-recomendations/tracks-recomendations.component';
+import { TopListenedGenresComponent } from './components/top-listened-genres/top-listened-genres.component';
+import { ArtistInfoComponent } from './components/artist-info/artist-info.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { TopTracksComponent } from './components/top-tracks/top-tracks.component
     ProfileComponent,
     SpotifyHeaderComponent,
     TopArtistsComponent,
-    TopTracksComponent
+    TopTracksComponent,
+    TracksRecomendationsComponent,
+    TopListenedGenresComponent,
+    ArtistInfoComponent
   ],
   imports: [
     BrowserModule,

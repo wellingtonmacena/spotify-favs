@@ -36,23 +36,23 @@ export class CallbackComponent {
         setTimeout(() => {
           this.loginService.getAllQueryParams();
           console.log('getAllQueryParams? ' + new Date());
-        }, 1000);
+        }, 500);
       }
 
       setTimeout(() => {
         this.loginService.getAcessToken();
         console.log('getAcessToken? ' + new Date());
-      },2000);
+      },1500);
 
       setTimeout(() => {
         this.spotifyService.getUserProfileInfo();
         console.log('getUserProfileInfo? ' + new Date());
         this.router.navigate([''], { queryParams: {} });
-      }, 2500);
+      }, 2000);
 
       setTimeout(() => {
         this.router.navigate([''], { queryParams: {} });
-      }, 3500);
+      }, 3000);
     }
   }
 }

@@ -2,22 +2,21 @@
   <h1>These are your Spotify Top Tracks</h1>
 
   <div class="search-container">
-      <fa-icon [icon]="faSearch"></fa-icon>
-      <input
-        type="text"
-        placeholder="Here you can search a track..."
-        (input)="search($event)"
-        class="search-bar"
-      />
-
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input
+      type="text"
+      placeholder="Here you can search a track..."
+      (input)="search($event)"
+      class="search-bar"
+    />
   </div>
 
   <div class="tracks-container" *ngIf="tracks.length > 0; else noTracks">
-    <form id="searchOptions" [formGroup]="searchForm">
-      <label for="time_range">Choose a time range:</label>
+    <form class="search-options" [formGroup]="searchForm">
+      <label >Choose a time range:</label>
       <select
         name="time_range"
-        id="time_range"
+        class="time-range"
         (change)="changeTimeRange($event)"
       >
         <option value="short_term">Short Term</option>
@@ -26,28 +25,28 @@
       </select>
       <img
         class="tooltip"
-        src="../../../../assets/tooltip.png"
+        src="../../../assets/tooltip.png"
         alt="tooltip"
         title="Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks)"
       />
 
-      <div class="quantityOption" >
-      <label for="">Quantity: </label>
-      <input
-        type="number"
-        placeholder="Number of items to return. Default: 10"
-        min="1"
-        max="50"
-        required
-        (input)="checkMaximumValue($event)"
-        formControlName="tracksQuantity"
-        id="tracksQuantity"
-      />
-    </div>
+      <div class="quantity-option">
+        <label for="">Quantity: </label>
+        <input
+          type="number"
+          placeholder="Number of items to return. Default: 10"
+          min="1"
+          max="50"
+          required
+          (input)="checkMaximumValue($event)"
+          formControlName="tracksQuantity"
+          class="tracks-quantity"
+        />
+      </div>
       <button class="button-search" (click)="getUserTopTracks()">Search</button>
     </form>
 
-    <div class="moments-container">
+    <div class="tracks-container">
       <div class="track" *ngFor="let track of tracks; index as i">
         <img
           class="track-image"

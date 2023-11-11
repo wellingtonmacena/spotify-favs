@@ -18,4 +18,14 @@ export class SpotifyHeaderComponent {
       this.emitter.emit(this.component);
     }
   }
+
+  selectTab(event: Event): void {
+    const target = event.target as HTMLLIElement;
+    let aTags = document.getElementById('spotify-header-navigation')!.getElementsByTagName('a');
+    for (let index = 0; index < aTags.length; index++) {
+      aTags[index].classList.remove('active')
+    }
+
+    target.classList.add('active')
+  }
 }

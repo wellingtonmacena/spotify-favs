@@ -12,25 +12,27 @@
   </div>
 
   <div class="artists-container" *ngIf="artists.length > 0; else noArtists">
-    <form id="searchOptions" [formGroup]="searchForm">
-      <label for="time_range">Choose a time range:</label>
+    <form class="search-options" [formGroup]="searchForm">
+      <label for="">Choose a time range:</label>
       <select
-        name="time_range"
-        id="time_range"
+        name="time-range"
+        class="time-range"
         (change)="changeTimeRange($event)"
       >
         <option value="short_term">Short Term</option>
         <option value="medium_term">Medium Term</option>
         <option value="long_term">Long Term</option>
       </select>
+
+
       <img
         class="tooltip"
-        src="../../../../assets/tooltip.png"
+        src="../../../assets/tooltip.png"
         alt="tooltip"
         title="Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks)"
       />
 
-      <div class="quantityOption">
+      <div class="quantity-option">
         <label for="">Quantity: </label>
         <input
           type="number"
@@ -40,7 +42,7 @@
           required
           (input)="checkMaximumValue($event)"
           formControlName="artistQuantity"
-          id="quantityArtist"
+          class="artist-quantity"
         />
       </div>
       <button class="button-search" (click)="getUserTopArtists()">
@@ -58,7 +60,7 @@
         />
         <div class="artist-information-container">
           <h2>{{ i + 1 }}º {{ artist.name }}</h2>
-          <p>Genres: {{ getArtistGenres(artist) }}</p>
+          <p class="artist-genres" >Genres: {{ getArtistGenres(artist) }}</p>
           <p>Popularity: {{ artist.popularity }}</p>
         </div>
       </div>
