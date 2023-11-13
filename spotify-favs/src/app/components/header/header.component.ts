@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common';
 import { MessagesService } from './../../services/messages.service';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,6 +12,11 @@ import { StorageSessionService } from 'src/app/services/storage-session.service'
 export class HeaderComponent {
   @Input() profilePhoto: string = '';
   @Input() userProfileInfo!: UserProfileResponse;
+  initialTabName = 'Home';
+
+  ngOnInit() {
+    this.selectTabByTagName(this.initialTabName);
+  }
 
   constructor(
     private storageSessionService: StorageSessionService,
@@ -29,18 +33,31 @@ export class HeaderComponent {
 
   logout() {
     sessionStorage.clear();
-    this.router.navigate([''], { queryParams: {} });
-    window.location.reload();
   }
 
   selectTab(event: Event): void {
     const target = event.target as HTMLLIElement;
-    let aTags = document.getElementById('navigation')!.getElementsByTagName('a');
+    let aTags = document
+      .getElementById('navigation')!
+      .getElementsByTagName('a');
 
     for (let index = 0; index < aTags.length; index++) {
-      aTags[index].classList.remove('active')
+      aTags[index].classList.remove('active');
     }
 
-    target.classList.add('active')
+    target.classList.add('active');
+  }
+
+  selectTabByTagName(tabName: string): void {
+    let aTags = document
+      .getElementById('navigation')!
+      .getElementsByTagName('a');
+
+    for (let index = 0; index < aTags.length; index++) {
+      if (aTags[index].text == tabName) {
+        aTags[index].classList.add('active');
+        break;
+      }
+    }
   }
 }

@@ -21,7 +21,7 @@ export class LoginComponent {
     this.isLogged = this.spotifyAuthService.isSetup;
     if (this.isLogged) {
       this.messagesService.add('Usuario já autenticado');
-      this.router.navigate([''], { queryParams: {} });
+      this.router.navigate(['/home'], { queryParams: {} });
     }
   }
 

@@ -1,5 +1,4 @@
-
-import { Component, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +6,7 @@ import { Component, Input, Output } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  @Input() component: string = 'Top Artists';
-  constructor() { }
+  component: string ='Top Listened Genres';
 
   send(action:any){
     this.component = action;

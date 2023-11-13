@@ -6,7 +6,6 @@ import { faSearch  } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MessagesService } from 'src/app/services/messages.service';
 import { Track, SpotifyTrackResponse} from 'src/app/interfaces/Spotify/SpotifyTrackResponse';
-import { Artist } from 'src/app/interfaces/Spotify/SpotifyArtistResponse';
 
 @Component({
   selector: 'app-top-tracks',

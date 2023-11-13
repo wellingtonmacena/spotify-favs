@@ -1,6 +1,8 @@
-<app-spotify-header (emitter)="send($event)"></app-spotify-header>
+<app-spotify-header [currentTabName]="component"  (emitter)="send($event)"/>
 
 <ng-container [ngSwitch]="component">
   <app-top-artists *ngSwitchCase="'Top Artists'"></app-top-artists>
   <app-top-tracks *ngSwitchCase="'Top Tracks'"></app-top-tracks>
+  <app-tracks-recomendations *ngSwitchCase="'Tracks Recomendations'"></app-tracks-recomendations>
+  <app-top-listened-genres *ngSwitchCase="'Top Listened Genres'"></app-top-listened-genres>
 </ng-container>
