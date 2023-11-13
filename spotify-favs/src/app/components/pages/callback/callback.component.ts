@@ -47,12 +47,9 @@ export class CallbackComponent {
       setTimeout(() => {
         this.spotifyService.getUserProfileInfo();
         console.log('getUserProfileInfo? ' + new Date());
-        this.router.navigate([''], { queryParams: {} });
+        window.location.reload();
+        this.router.navigate(['/home'], { queryParams: {} });
       }, 2000);
-
-      setTimeout(() => {
-        this.router.navigate([''], { queryParams: {} });
-      }, 3000);
     }
   }
 }

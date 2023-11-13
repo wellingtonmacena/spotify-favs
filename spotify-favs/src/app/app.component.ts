@@ -8,7 +8,4 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'spotify-favs';
-  constructor ( private router: Router){
-    //this.router.navigate(['/home'], { queryParams: {} });
-  }
 }

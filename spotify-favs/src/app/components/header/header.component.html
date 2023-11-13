@@ -1,14 +1,14 @@
 <div id="menu">
-  <a routerLink="" class="brand">
+  <a routerLink="/home" class="brand">
     <img src="../../../assets/spotify.png" alt="logo" />
     <h2>Spotify Favs</h2>
   </a>
   <nav>
     <ul id="navigation" class="links">
-      <li (click)="selectTab($event)"><a routerLink="">Home</a></li>
+      <li (click)="selectTab($event)"><a routerLink="/home">Home</a></li>
       <li (click)="selectTab($event)"><a routerLink="/login">Login</a></li>
       <li (click)="selectTab($event)"><a routerLink="/about">About</a></li>
-      <li (click)="selectTab($event)"><a routerLink="" (click)="logout()">Logout</a></li>
+      <li (click)="selectTab($event)"><a routerLink="/home" (click)="logout()">Logout</a></li>
 
       <div
         (click)="selectTab($event)"
