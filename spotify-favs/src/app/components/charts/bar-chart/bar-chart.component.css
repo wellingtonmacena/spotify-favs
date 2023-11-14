@@ -1,0 +1,9 @@
+.chart-container {
+  border: 1px solid black;
+  margin: 1.0em;
+}
+
+#bar-chart {
+  width: 35em;
+  height: 35em;
+}

@@ -66,6 +66,14 @@
 }
 
 
+.tracks-search-container{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
 .tracks-container {
   display: flex;
   flex-wrap: wrap;

@@ -33,6 +33,7 @@
   list-style: none;
   font-size: large;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .links a {

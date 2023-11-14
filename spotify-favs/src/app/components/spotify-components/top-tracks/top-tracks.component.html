@@ -11,7 +11,7 @@
     />
   </div>
 
-  <div class="tracks-container" *ngIf="tracks.length > 0; else noTracks">
+  <div class="tracks-search-container" *ngIf="tracks.length > 0; else noTracks">
     <form class="search-options" [formGroup]="searchForm">
       <label >Choose a time range:</label>
       <select
@@ -82,6 +82,6 @@
   </div>
 
   <ng-template #noTracks>
-    <h1>You must be logged to have access to your data analytics</h1>
+    <h1>You must be logged in to access your data</h1>
   </ng-template>
 </div>

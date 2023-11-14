@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UserProfileResponse } from 'src/app/interfaces/Spotify/UserProfileResponse';
 import { StorageSessionService } from 'src/app/services/storage-session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent {
     this.selectTabByTagName(this.initialTabName);
   }
 
-  constructor(private storageSessionService: StorageSessionService) {
+  constructor(private storageSessionService: StorageSessionService,   private router: Router) {
     if (this.storageSessionService.userProfileInfo != null) {
       this.userProfileInfo = this.storageSessionService.userProfileInfo;
       this.profilePhoto = this.userProfileInfo.images[1].url;
@@ -27,6 +28,7 @@ export class HeaderComponent {
 
   logout() {
     sessionStorage.clear();
+    this.router.navigate(['/home'], { queryParams: {} });
   }
 
   selectTab(event: Event): void {
