@@ -1,6 +1,5 @@
-
 import { SpotifyAuthService } from 'src/app/services/spotify-auth.service';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -16,6 +15,8 @@ import { MessagesService } from 'src/app/services/messages.service';
   styleUrls: ['./top-artists.component.css']
 })
 export class TopArtistsComponent {
+  @Input() artistItem!: Artist;
+  @Output() artistItemEmitter: EventEmitter<Artist> = new EventEmitter<Artist>();
   allArtists: Artist[] = [];
   artists: Artist[] = [];
   faSearch = faSearch;
@@ -72,8 +73,8 @@ export class TopArtistsComponent {
     }
   }
 
-  redirect(url: string) {
-    window.open(url, '_blank');
+  redirect(artist:Artist) {
+    this.artistItemEmitter.emit(artist);
   }
 
   getArtistGenres(artist: Artist) {

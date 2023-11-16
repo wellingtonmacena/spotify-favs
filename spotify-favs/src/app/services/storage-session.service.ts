@@ -36,4 +36,11 @@ export class StorageSessionService {
 
     return JSON.parse(userTopTracksString);
   }
+
+  get artistInfo(): SpotifyArtistResponse | null {
+    let userTopTracksString = this.getData('artistInfo');
+    if (userTopTracksString == null) return null;
+
+    return JSON.parse(userTopTracksString);
+  }
 }

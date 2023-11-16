@@ -18,13 +18,11 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { SpotifyHeaderComponent } from './components/spotify-components/spotify-header/spotify-header.component';
 import { TopArtistsComponent } from './components/spotify-components/top-artists/top-artists.component';
 import { TopTracksComponent } from './components/spotify-components/top-tracks/top-tracks.component';
-import { TracksRecomendationsComponent } from './components/spotify-components/tracks-recomendations/tracks-recomendations.component';
 import { TopListenedGenresComponent } from './components/spotify-components/top-listened-genres/top-listened-genres.component';
 import { PieChartComponent } from './components/charts/pie-chart/pie-chart.component';
 import { DoughnutChartComponent } from './components/charts/doughnut-chart/doughnut-chart.component';
 import { ArtistInfoComponent } from './components/spotify-components/artist-info/artist-info.component';
 import { BarChartComponent } from './components/charts/bar-chart/bar-chart.component';
-
 
 @NgModule({
   declarations: [
@@ -41,7 +39,6 @@ import { BarChartComponent } from './components/charts/bar-chart/bar-chart.compo
     SpotifyHeaderComponent,
     TopArtistsComponent,
     TopTracksComponent,
-    TracksRecomendationsComponent,
     TopListenedGenresComponent,
     PieChartComponent,
     DoughnutChartComponent,

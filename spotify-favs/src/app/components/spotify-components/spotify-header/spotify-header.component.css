@@ -31,3 +31,12 @@
 .active:hover {
   color: #020202;
 }
+
+.inactive {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.inactive * {
+  all: unset
+}

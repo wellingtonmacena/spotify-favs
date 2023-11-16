@@ -10,6 +10,11 @@ export interface SpotifyTrackResponse {
   previous: any
 }
 
+export interface ArtistTopTracksResponse {
+  tracks: Track[]
+}
+
+
 export interface Track {
   album: Album
   artists: Artist[]

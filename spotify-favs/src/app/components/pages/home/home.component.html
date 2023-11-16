@@ -1,8 +1,21 @@
-<app-spotify-header [currentTabName]="component"  (emitter)="send($event)"/>
+<app-spotify-header
+  [currentTabName]="currentTabName"
+  (emitter)="shareCurrentTabName($event)"
+/>
 
-<ng-container [ngSwitch]="component">
-  <app-top-artists *ngSwitchCase="'Top Artists'"></app-top-artists>
+<ng-container [ngSwitch]="currentTabName">
+  <app-top-artists
+    [artistItem]="artistItem"
+    (artistItemEmitter)="shareArtistItem($event)"
+    *ngSwitchCase="'Top Artists'"
+  ></app-top-artists>
   <app-top-tracks *ngSwitchCase="'Top Tracks'"></app-top-tracks>
-  <app-tracks-recomendations *ngSwitchCase="'Tracks Recomendations'"></app-tracks-recomendations>
-  <app-top-listened-genres *ngSwitchCase="'Top Listened Genres'"></app-top-listened-genres>
+  <app-top-listened-genres
+    *ngSwitchCase="'Top Listened Genres'"
+  ></app-top-listened-genres>
+  <app-artist-info
+    [artistItem]="artistItem"
+    *ngSwitchCase="'Artist\'s Top Tracks'"
+  >
+  </app-artist-info>
 </ng-container>

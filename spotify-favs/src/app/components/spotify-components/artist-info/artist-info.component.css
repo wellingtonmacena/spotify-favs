@@ -1,0 +1,199 @@
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #b1df9b;
+}
+
+.home-container h1 {
+  margin-bottom: 0.5em;
+}
+
+
+/* artist styles */
+.artist-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.artist {
+  width: 85%;
+  margin-bottom: 1.5em;
+  text-align: center;
+  align-self: center;
+  border: 0.1em solid black;
+  max-width: 80%;
+  box-shadow: 0.3em 0.5em;
+}
+
+.artist img {
+  width: 100%;
+  padding: 1em;
+  transition: transform 0.2s; /* Animation */
+}
+
+.artist img:hover {
+  transform: scale(
+    1.1
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.artist-information-container {
+  margin-top: 1em;
+  transition: transform 0.2s; /* Animation */
+}
+
+.artist-information-container:hover {
+  transform: scale(1.2); /* Animation */
+}
+
+
+.artist-image {
+  cursor: pointer;
+}
+
+.artist h2{
+  margin-bottom: 1.2em;
+}
+
+.artist p {
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+  justify-content: center;
+}
+
+.artist .date {
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+a {
+  color: #dec129;
+  padding: 0.3em 0.6em;
+}
+
+a:hover {
+  color: #efefef;
+}
+
+
+.moment-image {
+  cursor: pointer;
+}
+
+
+
+
+
+/* tracks styles  */
+
+
+.artist-top-tracks-title{
+  align-self: center;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+
+
+.tracks-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.track {
+  width: 32%;
+  margin-bottom: 1em;
+  text-align: center;
+  border: 0.1em solid black;
+  padding: 1em;
+  box-shadow: 0.3em 0.5em;
+}
+
+.track img {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 1em;
+  transition: transform 0.2s; /* Animation */
+}
+
+.track img:hover {
+  transform: scale(
+    1.1
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.track h3,
+.track p {
+  margin-bottom: 1em;
+}
+
+.track-information-container {
+  padding: 1em;
+  transition: transform 0.2s; /* Animation */
+}
+
+.track-information-container:hover {
+  transform: scale(1.2); /* Animation */
+}
+
+.track .date {
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+
+.track-image {
+  cursor: pointer;
+}
+
+
+.artist-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1.5em;
+  line-height: 0.4em;
+  cursor: pointer;
+}
+
+.popularity,
+.duration {
+  font-size: 1.5em;
+}
+
+.duration {
+  margin-top: -0.2em;
+}
+
+.track-name-icon {
+  margin-bottom: 1.4em;
+}
+
+.track-name {
+  display: flex;
+  justify-content: center;
+}
+
+.track-name fa-icon {
+  margin-right: 0.8em;
+  font-weight: bold;
+}
+
+.track-name h2 {
+  margin-top: -0.2em;
+}
+
+.explicit-icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+

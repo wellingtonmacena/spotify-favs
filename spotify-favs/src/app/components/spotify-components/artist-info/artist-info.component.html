@@ -1,1 +1,63 @@
-<p>artist-info works!</p>
+<div class="home-container">
+  <h1>Artist Page</h1>
+
+  <div class="artist-container">
+    <div class="artist">
+      <img
+        class="artist-image"
+        src="{{ artistItem.images[0].url }}"
+        alt="{{ artistItem.name }}"
+        (click)="redirect(artistItem.external_urls.spotify)"
+      />
+      <div class="artist-information-container">
+        <h2>{{ artistItem.name }}</h2>
+        <p class="artist-genres">Genres: {{ getArtistGenres(artistItem) }}</p>
+        <p>Popularity: {{ artistItem.popularity }}</p>
+        <p>Followers: {{ artistItem.followers.total.toLocaleString() }}</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="artist-top-tracks-title" >Artist Top Tracks</h2>
+
+  <div class="tracks-container">
+    <div class="track" *ngFor="let track of artistTopTracks; index as i">
+      <img
+        class="track-image"
+        src="{{ track.album.images[0].url }}"
+        alt="{{ track.name }}"
+        (click)="redirect(track.external_urls.spotify)"
+      />
+
+      <div class="track-information-container">
+        <div class="track-name-icon">
+          <div class="track-name" *ngIf="track.explicit; else noExplicit">
+            <fa-icon [icon]="faE" title="Explicit"></fa-icon>
+            <h2>{{ i + 1 }}º {{ track.name }}</h2>
+          </div>
+
+          <ng-template #noExplicit>
+            <h2>{{ i + 1 }}º {{ track.name }}</h2>
+          </ng-template>
+        </div>
+        <div *ngFor="let artist of track.artists; index as i">
+          <p
+            class="artist-track"
+            (click)="redirect(track.external_urls.spotify)"
+          >
+            º {{ artist.name }}
+          </p>
+        </div>
+
+        <p class="popularity">Popularity: {{ track.popularity }}</p>
+        <p class="duration">
+          Duration: {{ convertToSeconds(track.duration_ms) }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noArtists>
+  <h1>You must be logged in to access your data</h1>
+</ng-template>
