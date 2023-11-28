@@ -21,6 +21,19 @@ export class SpotifyService {
     private storageSessionService: StorageSessionService
   ) {}
 
+  async getUserTopArtistsNext(url: string): Promise<SpotifyArtistResponse> {
+    var accessToken = this.spotifyAuthService.accessToken;
+    var response: any = await axios({
+      method: 'get',
+      url: url,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    return response.data;
+  }
+
   async getUserTopArtists(
     time_range: string,
     limit: string,
@@ -71,6 +84,20 @@ export class SpotifyService {
     return response.data;
   }
 
+
+  async ggetUserTopTracksNext(url: string): Promise<SpotifyTrackResponse> {
+    var accessToken = this.spotifyAuthService.accessToken;
+    var response: any = await axios({
+      method: 'get',
+      url: url,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    return response.data;
+  }
+
   async getUserProfileInfo() {
     var accessToken = this.spotifyAuthService.accessToken;
     var response = await axios({
@@ -106,7 +133,10 @@ export class SpotifyService {
     return response.data;
   }
 
-  async GetArtistTopTracks(id: string, market:string): Promise<ArtistTopTracksResponse> {
+  async GetArtistTopTracks(
+    id: string,
+    market: string
+  ): Promise<ArtistTopTracksResponse> {
     var accessToken = this.spotifyAuthService.accessToken;
     var response: any = await axios({
       method: 'get',

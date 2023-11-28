@@ -1,14 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SpotifyAuthService } from 'src/app/services/spotify-auth.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { faEtsy } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MessagesService } from 'src/app/services/messages.service';
-import {
-  Artist,
-  SpotifyArtistResponse,
-} from 'src/app/interfaces/Spotify/SpotifyArtistResponse';
+import { Artist } from 'src/app/interfaces/Spotify/SpotifyArtistResponse';
 import { ChartItem } from 'src/app/interfaces/ChartItem';
 
 @Component({
@@ -48,7 +45,7 @@ export class TopListenedGenresComponent {
         '#A3B18A',
         '#718355',
         '#2A9134',
-        '#D8F3DC'
+        '#D8F3DC',
       ];
     } else {
       this.messagesService.add('You are not logged');
@@ -64,14 +61,32 @@ export class TopListenedGenresComponent {
   }
 
   async getUserTopArtists() {
-    var response: SpotifyArtistResponse =
-      await this.spotifyService.getUserTopArtists(
-        this.timeRange,
-        this.artistsQuantity
-      );
+    let stop = false;
+    let limit = 15;
+    let responseItems: Artist[] = [];
+    let numberArtistQuantity = Number(this.artistsQuantity);
 
-    this.allArtists = response.items;
-    this.artists = response.items;
+    let response = await this.spotifyService.getUserTopArtists(
+      this.timeRange,
+      limit.toString()
+    );
+
+    responseItems = [...responseItems, ...response.items];
+    stop =
+      response.next == null || responseItems.length >= numberArtistQuantity;
+
+    while (!stop) {
+      response = await this.spotifyService.getUserTopArtistsNext(response.next);
+      responseItems = [...responseItems, ...response.items];
+
+      stop =
+        response.next == null || responseItems.length >= numberArtistQuantity;
+    }
+
+    responseItems = responseItems.slice(0, numberArtistQuantity);
+
+    this.allArtists = responseItems;
+    this.artists = this.allArtists;
     this.chartItems = this.getAllGenres(response.items);
   }
 
@@ -94,6 +109,7 @@ export class TopListenedGenresComponent {
     let filteredSortedMap = Array.from(chartData)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 10);
+
     let sortedMap = new Map(Array.from(filteredSortedMap));
 
     for (let item of sortedMap) {
@@ -135,9 +151,9 @@ export class TopListenedGenresComponent {
   checkMaximumValue(event: Event) {
     const target = event.target as HTMLInputElement;
     const value = target.value;
-    if (Number(value) > 50) {
-      this.messagesService.add('Número máximo é 50');
-      this.searchForm.patchValue({ artistQuantity: 50 });
+    if (Number(value) > 100) {
+      this.messagesService.add('Número máximo é 100');
+      this.searchForm.patchValue({ artistQuantity: 100 });
     }
   }
 }

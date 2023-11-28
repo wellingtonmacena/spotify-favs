@@ -12,11 +12,12 @@ import { MessagesService } from 'src/app/services/messages.service';
 @Component({
   selector: 'app-top-artists',
   templateUrl: './top-artists.component.html',
-  styleUrls: ['./top-artists.component.css']
+  styleUrls: ['./top-artists.component.css'],
 })
 export class TopArtistsComponent {
   @Input() artistItem!: Artist;
-  @Output() artistItemEmitter: EventEmitter<Artist> = new EventEmitter<Artist>();
+  @Output() artistItemEmitter: EventEmitter<Artist> =
+    new EventEmitter<Artist>();
   allArtists: Artist[] = [];
   artists: Artist[] = [];
   faSearch = faSearch;
@@ -36,7 +37,7 @@ export class TopArtistsComponent {
 
       this.getUserTopArtists();
     } else {
-      this.messagesService.add("You are not logged")
+      this.messagesService.add('You are not logged');
     }
   }
 
@@ -49,14 +50,30 @@ export class TopArtistsComponent {
   }
 
   async getUserTopArtists() {
-    var response: SpotifyArtistResponse =
-      await this.spotifyService.getUserTopArtists(
-        this.timeRange,
-        this.artistQuantity
-      );
+    let stop = false;
+    let limit= 15
+    let responseItems: Artist[] = [];
+    let numberArtistQuantity = Number(this.artistQuantity);
 
-    this.allArtists = response.items;
-    this.artists = response.items;
+    let response = await this.spotifyService.getUserTopArtists(
+      this.timeRange,
+      limit.toString()
+    );
+
+    responseItems = [...responseItems, ...response.items];
+    stop = response.next == null || responseItems.length >= numberArtistQuantity;
+
+    while (!stop) {
+      response = await this.spotifyService.getUserTopArtistsNext(response.next);
+      responseItems = [...responseItems, ...response.items];
+
+      stop = response.next == null || responseItems.length >= numberArtistQuantity;
+    }
+
+    responseItems = responseItems.slice(0, numberArtistQuantity);
+
+    this.allArtists = responseItems;
+    this.artists = this.allArtists;
     console.log(this.artists);
   }
 
@@ -73,7 +90,7 @@ export class TopArtistsComponent {
     }
   }
 
-  redirect(artist:Artist) {
+  redirect(artist: Artist) {
     this.artistItemEmitter.emit(artist);
   }
 
@@ -99,12 +116,12 @@ export class TopArtistsComponent {
     this.searchForm.patchValue({ timeRange: value });
   }
 
-  checkMaximumValue(event: Event){
+  checkMaximumValue(event: Event) {
     const target = event.target as HTMLInputElement;
     const value = target.value;
-    if(Number(value) > 50){
-     this.messagesService.add("Número máximo é 50")
-      this.searchForm.patchValue({ artistQuantity: 50 });
+    if (Number(value) > 100) {
+      this.messagesService.add('Número máximo é 100');
+      this.searchForm.patchValue({ artistQuantity: 100 });
     }
   }
 }

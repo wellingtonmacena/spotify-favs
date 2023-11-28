@@ -47,15 +47,32 @@ export class TopTracksComponent {
   }
 
   async getUserTopTracks() {
-    var response: SpotifyTrackResponse =
-      await this.spotifyService.getUserTopTracks(
-        this.timeRange,
-        this.tracksQuantity
-      );
+    let stop = false;
+    let limit= 15
+    let responseItems: Track[] = [];
+    let numberTracksQuantity = Number(this.tracksQuantity);
 
-    this.allTracks = response.items;
-    this.tracks = response.items;
-    console.log(this.tracks);
+    let response = await this.spotifyService.getUserTopTracks(
+      this.timeRange,
+      limit.toString()
+    );
+
+    responseItems = [...responseItems, ...response.items];
+    stop = response.next == null || responseItems.length >= numberTracksQuantity;
+
+    while (!stop) {
+      response = await this.spotifyService.ggetUserTopTracksNext(response.next);
+      responseItems = [...responseItems, ...response.items];
+
+      stop = response.next == null || responseItems.length >= numberTracksQuantity;
+    }
+
+    responseItems = responseItems.slice(0, numberTracksQuantity);
+
+    this.allTracks = responseItems;
+    this.tracks = this.allTracks;
+    console.log(this.allTracks);
+
   }
 
   search(event: Event): void {
@@ -84,9 +101,9 @@ export class TopTracksComponent {
   checkMaximumValue(event: Event){
     const target = event.target as HTMLInputElement;
     const value = target.value;
-    if(Number(value) > 50){
-     this.messagesService.add("Número máximo é 50")
-      this.searchForm.patchValue({ artistQuantity: 50 });
+    if(Number(value) > 100){
+     this.messagesService.add("Número máximo é 100")
+      this.searchForm.patchValue({ artistQuantity: 100 });
     }
   }
 
