@@ -17,6 +17,7 @@ export class TopListenedGenresComponent {
   allArtists: Artist[] = [];
   artists: Artist[] = [];
   @Input() chartItems: ChartItem[] = [];
+  @Input() allChartItems: ChartItem[] = [];
   @Input() chartItemsPossibleColors: string[] = [];
   faSearch = faSearch;
   faE = faEtsy;
@@ -88,6 +89,7 @@ export class TopListenedGenresComponent {
     this.allArtists = responseItems;
     this.artists = this.allArtists;
     this.chartItems = this.getAllGenres(response.items);
+    this.allChartItems = this.chartItems;
   }
 
   getAllGenres(artists: Artist[]): ChartItem[] {
@@ -134,11 +136,12 @@ export class TopListenedGenresComponent {
     const value = target.value;
 
     if (value == '') {
-      this.artists = this.allArtists;
+      this.chartItems = this.allChartItems;
     } else {
-      this.artists = this.allArtists.filter(
-        (item) => item.name != null && item.name.toLowerCase().includes(value)
-      );
+        this.chartItems = this.chartItems.filter(
+          (item) => item.name != null && item.name.toLowerCase().includes(value)
+        );
+
     }
   }
 
