@@ -17,7 +17,7 @@
     <a href="https://github.com/wellingtonmacena/spotify-favs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/wellingtonmacena/spotify-favs">View Demo</a>
+    <a href="https://github.com/wellingtonmacena/spotify-favs/blob/main/assets/demo-spotify-favs.gif">View Demo</a>
     ·
     <a href="https://github.com/wellingtonmacena/spotify-favs/issues">Report Bug</a>
     ·
@@ -171,7 +171,5 @@ Any problem or question installing the project, you can message me though my per
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/wellington-macena-dev
 [product-screenshot]: assets/demo-spotify-favs.gif
-[ASP.NET]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[ASP.NET-url]: https://dotnet.microsoft.com/pt-br/apps/aspnet
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [Angular-url]: https://angular.io/
