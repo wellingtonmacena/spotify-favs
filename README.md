@@ -56,12 +56,10 @@
 
 ![Product Name Screen Shot][product-screenshot]
 
-Here you have a simple but robust application where you can discore your top tracks, top artists and the most listened genres of one period of time. 
+Here you have a simple but robust application where you can discover your top tracks, top artists and the most listened genres of one period of time. 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project.
 
 - ![TypeScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)
 - [![Angular][Angular.io]][Angular-url]
@@ -150,7 +148,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See <a href="https://github.com/wellingtonmacena/spotify-favs/blob/main/LICENSE">`LICENSE`</a>  for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
