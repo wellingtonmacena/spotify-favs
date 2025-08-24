@@ -57,8 +57,7 @@ out-tsc/
 *.sln
 *.sw?
 
-# Angular environment files (optional if you don’t want to commit them)
-src/environments/environment*.ts
+
 
 # Firebase or secrets
 .firebase/
