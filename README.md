@@ -112,5 +112,3 @@ Flow:
 * 📝 [Spotify Web API Reference](https://developer.spotify.com/documentation/web-api)
 
 ---
-
-👉 Do you want me to **generate the flowchart image (`docs/oauth-flowchart.png`)** for you right now (like I did with the Outbox diagram), so you just need to drop it in your repo?
